@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.win8.credittransfer.SecondActivity"
-    android:background="#abf1e3"
+    android:background="#c99af7"
     android:orientation="vertical">
 
 
@@ -120,8 +120,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_weight="1"
-            android:textSize="25sp"
-            android:textColor="#000408"/>
+            android:textSize="18sp"
+            android:textColor="#000408" />
 
     </LinearLayout>
 
@@ -163,7 +163,7 @@
         android:layout_marginLeft="40dp"
         android:text="Transfer Credit"
         android:textSize="25sp"
-        android:background="#f4988a"/>
+        android:background="#ef9f70"/>
 
 
 

@@ -9,12 +9,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#ffef79">
 
         <ListView
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/list-view"/>
+            android:id="@+id/list-view"
+            android:padding="2dp"
+            android:elevation="2dp"/>
 
 
 

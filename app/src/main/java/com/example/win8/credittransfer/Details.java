@@ -9,20 +9,19 @@ import java.io.Serializable;
  * Created by Win8 on 4/21/2018.
  */
 
-@SuppressWarnings("serial")
+
 public class Details
 {
     String firstName;
     String lastName;
     int currentCredit;
 
-    Details(String firstName,String lastName,int currentCredit)
+    public Details(String firstName, String lastName, int currentCredit)
     {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setCurrentCredit(currentCredit);
     }
-
 
     public String getFirstName()
     {

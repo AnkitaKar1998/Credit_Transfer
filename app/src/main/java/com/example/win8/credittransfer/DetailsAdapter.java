@@ -25,17 +25,20 @@ public class DetailsAdapter extends ArrayAdapter
         super(context,resources);
     }
 
+
     public void add(Details object)
     {
         list.add(object);
         super.add(object);
     }
 
+    @Override
     public int getCount()
     {
         return  list.size();
     }
 
+    @Override
     public Object getItem(int position)
     {
         return list.get(position);

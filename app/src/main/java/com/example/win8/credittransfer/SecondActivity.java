@@ -14,32 +14,42 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 {
     TextView t1,t2,t3,t4,t5;
     Button b;
+    String firstName,lastName,email,userid,currentcredit;
+    int userID,currentCredit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        Log.d("ankita","SecondActivity onCreate() start");
         Intent i = getIntent();
-        //Details d = (Details)i.getSerializableExtra("User_Details");
         String fName = i.getExtras().getString("fName");
-        String lName = i.getExtras().getString("lNmae");
+        String lName = i.getExtras().getString("lName");
         DatabaseAdapter databaseAdapter = new DatabaseAdapter(this);
-        /*Cursor cursor = databaseAdapter.getDetails(fName,lName);
-        Log.d("ankita","DatabaseAdapter getDetails called");
-        int indexUserID = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_11);
-        int indexFirstName = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_12);
-        int indexLastName = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_13);
-        int indexEmail = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_14);
-        int indexCurrentCredit = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_15);
-        int userID = cursor.getInt(indexUserID);
-        String userid = ""+userID;
-        String firstName = cursor.getString(indexFirstName);
-        String lastName = cursor.getString(indexLastName);
-        String email = cursor.getString(indexEmail);
-        int currentCredit = cursor.getInt(indexCurrentCredit);
-        String currentcredit = ""+currentCredit;
+        Cursor cursor = databaseAdapter.getDetails(fName,lName);
+        firstName = null;
+        lastName = null;
+        email = null;
+        currentcredit = null;
+        userid = null;
+        int count = 0;
+        while(cursor.moveToNext() && count !=1)
+        {
+            int indexUserID = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_11);
+            int indexFirstName = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_12);
+            int indexLastName = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_13);
+            int indexEmail = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_14);
+            int indexCurrentCredit = cursor.getColumnIndex(DatabaseAdapter.DatabaseHelper.COL_15);
+            userID = cursor.getInt(indexUserID);
+            userid = ""+userID;
+            firstName = cursor.getString(indexFirstName);
+            lastName = cursor.getString(indexLastName);
+            email = cursor.getString(indexEmail);
+            currentCredit = cursor.getInt(indexCurrentCredit);
+            currentcredit = ""+currentCredit;
+            count++;
+
+        }
         t1 = (TextView)findViewById(R.id.t1);
         t2 = (TextView)findViewById(R.id.t2);
         t3 = (TextView)findViewById(R.id.t3);
@@ -49,16 +59,18 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         t2.setText(firstName);
         t3.setText(lastName);
         t4.setText(email);
-        t5.setText(currentcredit);*/
+        t5.setText(currentcredit);
         b = (Button)findViewById(R.id.b);
         b.setOnClickListener(this);
-        Log.d("ankita","SecondActivity onCreate() end");
     }
 
     @Override
     public void onClick(View view)
     {
         Intent intent = new Intent(this,ThirdActivity.class);
+        intent.putExtra("sourcefName",firstName);
+        intent.putExtra("sourcelName",lastName);
+        intent.putExtra("currentCredit",currentCredit);
         startActivity(intent);
     }
 }
